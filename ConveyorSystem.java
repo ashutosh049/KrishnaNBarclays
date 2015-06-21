@@ -112,8 +112,38 @@ class Departure
 
 }
 
-class Departures
-{
-		
-}
+ class Departures
+ {
+	private ArrayList<Departure> departuresList = new ArrayList<Departure>();
+  
+  // add a new Departure whenever required
+   public static void addBagToList(Departure departure)
+   {
+     departuresList.add(departure);
+   }
+    //add Departures on instantiation
+    public Departures()
+    {
+    
+      departuresList.add(new Departure("UA10","A1","MIA","08:00"));
+      departuresList.add(new Departure("UA11","A1","LAX","09:00"));
+      departuresList.add(new Departure("UA12","A1","JFK","09:45"));
+      departuresList.add(new Departure("UA13","A2","JFK","08:30"));
+      departuresList.add(new Departure("UA14","A2","JFK","09:45"));
+      departuresList.add(new Departure("UA15","A2","JFK","10:00"));
+      departuresList.add(new Departure("UA16","A3","JFK","09:00"));
+      departuresList.add(new Departure("UA17","A4","MHT","09:15"));
+      departuresList.add(new Departure("UA18","A5","LAX","10:15"));
+    }
+    
+    public ArrayList getDeparturesList()
+    {
+      return departuresList;
+    }
+    
+    public ArrayList setDeparturesList(ArrayList<String,String,String> departuresList)
+    {
+      this.departuresList = departuresList;
+    }		
+  }
 }
