@@ -44,20 +44,37 @@ class Bags
   
   private ArrayList<Bag> bagsList = new ArrayList<Bag>();
   
+  public Bags bags = null;
+  protected Bags()
+  {
+  	
+  }
+  
+  public static Bags getBagsObject()
+  {
+  	if (bags == null)
+  	{
+  		synchronized(Bags.class)
+  		{
+  			bags = new Bags();
+  			bagsList.add(new Bag("0001","Concourse_A_Ticketing","UA12"));
+		      	bagsList.add(new Bag("0002","A5","UA17"));
+		      	bagsList.add(new Bag("0003","A2","UA10"));
+		      	bagsList.add(new Bag("0004","A8","UA18"));
+		      	bagsList.add(new Bag("0005","A7","ARRIVAL"));
+  		}
+  	}
+  	else
+  	{
+  		return bags;
+  	}
+  }
   // add a new bag whenever required
-   public static void addBagToList(Bag bag)
+   public void addBagToList(Bag bag)
    {
      bagsList.add(bag);
    }
     //add bags on instantiation
-    public Bags()
-    {
-      bagsList.add(new Bag("0001","Concourse_A_Ticketing","UA12"));
-      bagsList.add(new Bag("0002","A5","UA17"));
-      bagsList.add(new Bag("0003","A2","UA10"));
-      bagsList.add(new Bag("0004","A8","UA18"));
-      bagsList.add(new Bag("0005","A7","ARRIVAL"));
-    }
     
     public ArrayList getBagsList()
     {
@@ -114,27 +131,46 @@ class Departure
 
  class Departures
  {
-	private ArrayList<Departure> departuresList = new ArrayList<Departure>();
+  private ArrayList<Departure> departuresList = new ArrayList<Departure>();
+  public Departures departures = null;
+  protected Departures()
+  {
+  	
+  }
+  
+  public static Departures getDeparturesObject()
+  {
+  	if (departures == null)
+  	{
+  		synchronized(Departures.class)
+  		{
+  			departures = new Departures();
+  			departuresList.add(new Departure("UA10","A1","MIA","08:00"));
+      			departuresList.add(new Departure("UA11","A1","LAX","09:00"));
+      			departuresList.add(new Departure("UA12","A1","JFK","09:45"));
+      			departuresList.add(new Departure("UA13","A2","JFK","08:30"));
+      			departuresList.add(new Departure("UA14","A2","JFK","09:45"));
+      			departuresList.add(new Departure("UA15","A2","JFK","10:00"));
+      			departuresList.add(new Departure("UA16","A3","JFK","09:00"));
+      			departuresList.add(new Departure("UA17","A4","MHT","09:15"));
+      			departuresList.add(new Departure("UA18","A5","LAX","10:15"));
+  		}
+  	}
+  	else
+  	{
+  		return departures;
+  	}
+  }
   
   // add a new Departure whenever required
-   public static void addBagToList(Departure departure)
+   public void addDepartureToList(Departure departure)
    {
      departuresList.add(departure);
    }
-    //add Departures on instantiation
-    public Departures()
-    {
-    
-      departuresList.add(new Departure("UA10","A1","MIA","08:00"));
-      departuresList.add(new Departure("UA11","A1","LAX","09:00"));
-      departuresList.add(new Departure("UA12","A1","JFK","09:45"));
-      departuresList.add(new Departure("UA13","A2","JFK","08:30"));
-      departuresList.add(new Departure("UA14","A2","JFK","09:45"));
-      departuresList.add(new Departure("UA15","A2","JFK","10:00"));
-      departuresList.add(new Departure("UA16","A3","JFK","09:00"));
-      departuresList.add(new Departure("UA17","A4","MHT","09:15"));
-      departuresList.add(new Departure("UA18","A5","LAX","10:15"));
-    }
+   public void clearDeparturesList()
+   {
+     departuresList.clear();
+   }
     
     public ArrayList getDeparturesList()
     {
